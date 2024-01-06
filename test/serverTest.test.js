@@ -21,7 +21,6 @@ test('getting characters', async() => {
     .set('Accept', 'application/json')
 
     expect(response.status).toEqual(200);
-    expect(response.body.length).toEqual(3);
-    // expect(response.body).toEqual([]);
+    expect(response.body).toHaveLength(3);
 
 })
