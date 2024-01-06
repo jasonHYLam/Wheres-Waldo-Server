@@ -1,4 +1,5 @@
 const initializeMongoServer = require('./mongoConfigTesting');
+const populateTestDB = require('../populatedb/populateTestDb')
 
 const index = require('../routes/index');
 
@@ -9,9 +10,18 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use('/', index);
 
-beforeAll(initializeMongoServer());
+beforeAll(() => {
+    initializeMongoServer();
+    populateTestDB();
+});
 
-test('index route works', done => {
-    request(app)
+test('getting characters', async() => {
+    const response = await request(app)
     .get('/get_char')
+    .set('Accept', 'application/json')
+
+    expect(response.status).toEqual(200);
+    expect(response.body.length).toEqual(3);
+    // expect(response.body).toEqual([]);
+
 })
