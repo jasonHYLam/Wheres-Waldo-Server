@@ -14,7 +14,7 @@ router.get('/',(req, res, next) => {
 
 router.get('/get_char', controller.get_chars)
 
-router.post('/get_specific_char/', controller.get_specific_char)
+router.post('/get_specific_char', controller.get_specific_char)
 // create get for getting database character info
 
 // create get for all character info
