@@ -4,15 +4,25 @@ const Character = require('../models/character');
 
 exports.get_chars = asyncHandler( async(req, res, next) => {
     const allCharacters = await Character.find({}).exec()
-    console.log('doki doki waku waku')
     res.json(allCharacters)
 })
 
 exports.get_specific_char = asyncHandler( async(req, res, next) => {
-    console.log('nanka saa')
-    console.log(req.body)
 
-    const character = await Character.find({name: req.body.name}).exec()
-    console.log('aquarius')
-    console.log(character)
+    const [ character ] = await Character.find({name: req.body.name}).exec()
+    // compare x and y oordinates seperately, in the given range.
+    // perhaps better if i swap such that range of coords is used.
+    // i chose to use range of mouseCoords because of the targetBox.
+    if (
+        (character.coords.x < (req.body.mouseCoords.x + 30) && character.coords.x > (req.body.mouseCoords.x - 30))
+        &&
+        (character.coords.y < (req.body.mouseCoords.y + 30) && character.coords.y > (req.body.mouseCoords.y - 30))
+        )
+        {
+            res.json({isCorrect: true})
+        }
+
+    else {
+        res.json({isCorrect: false})
+    }
 })
