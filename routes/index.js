@@ -21,7 +21,7 @@ router.post('/get_specific_char', controller.get_specific_char)
 // create get for all character info
 
 // get for starting timer
-router.get('/start_game', timerController.update_timer)
+router.get('/start_game', timerController.start_timer)
 
 // get for stopping timer
 router.get('/stop_game', timerController.stop_timer_and_get_value)
