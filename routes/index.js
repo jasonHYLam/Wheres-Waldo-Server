@@ -3,6 +3,7 @@ const router = express.Router();
 
 const characterController = require('../controllers/characterController');
 const timerController = require('../controllers/timerController');
+const scoreController = require('../controllers/scoreController');
 
 /* GET home page. */
 // router.get('/',(req, res, next) => {
@@ -26,6 +27,7 @@ router.get('/start_game', timerController.start_timer)
 // get for stopping timer
 router.get('/stop_game', timerController.stop_timer_and_get_value)
 
+router.post('/submit_score', scoreController.submit_score)
 
 
 module.exports = router;
