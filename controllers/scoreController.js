@@ -21,3 +21,9 @@ exports.submit_score = [
     })
 
 ]
+
+exports.get_all_scores = asyncHandler( async(req, res, next) => {
+
+    const allScores = await UserAndScore.find({}).exec()
+    res.json({allScores})
+})
