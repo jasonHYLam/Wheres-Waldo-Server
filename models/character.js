@@ -9,6 +9,8 @@ const CharacterSchema = new Schema({
         y: {type: Number, required: true},
     },
     is_found: {type: Boolean, required: true, default: false},
+
+    map: {type: Boolean, required: true}
 })
 
 module.exports = mongoose.model('Character', CharacterSchema);
