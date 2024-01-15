@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../controllers/controller');
+const characterController = require('../controllers/characterController');
 const timerController = require('../controllers/timerController');
 
 /* GET home page. */
@@ -13,9 +13,9 @@ router.get('/',(req, res, next) => {
 
 });
 
-router.get('/get_char', controller.get_chars)
+router.get('/get_char', characterController.get_chars)
 
-router.post('/get_specific_char', controller.get_specific_char)
+router.post('/get_specific_char', characterController.get_specific_char)
 // create get for getting database character info
 
 // create get for all character info

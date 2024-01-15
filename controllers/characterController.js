@@ -28,22 +28,3 @@ exports.get_specific_char = asyncHandler( async(req, res, next) => {
         res.json({isCorrect: false})
     }
 })
-
-exports.get_timer = asyncHandler( async(req, res, next) => {
-
-    let timer = 0;
-
-    function updateTimer() {
-
-        setInterval(() => {
-            timer += 1;
-        }, 1000)
-
-    } 
-
-    updateTimer(timer)
-
-    
-
-
-})
