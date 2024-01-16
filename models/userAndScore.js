@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const UserAndScoreSchema = new Schema({
     name: {required: true, type: String},
     timeInMs: {required: true, type: Number},
+    mapName: {required: true, type: String},
 }, opts)
 
 UserAndScoreSchema.virtual('timeInSeconds').get(function() {
