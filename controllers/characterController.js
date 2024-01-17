@@ -10,11 +10,8 @@ exports.get_chars = asyncHandler( async(req, res, next) => {
 exports.get_specific_char = asyncHandler( async(req, res, next) => {
 
     const [ character ] = await Character.find({name: req.body.name}).exec()
-    console.log('character')
-    console.log(character)
     // compare x and y oordinates seperately, in the given range.
-    // perhaps better if i swap such that range of coords is used.
-    // i chose to use range of mouseCoords because of the targetBox.
+    // I chose to use range of mouseCoords because of the targetBox.
     if (
         (character.coords.x < (req.body.normalisedCoords.x + 30) && character.coords.x > (req.body.normalisedCoords.x - 30))
         &&

@@ -15,6 +15,7 @@ exports.submit_score = [
         const userAndScore = new UserAndScore({
             name: he.decode(req.body.name),
             timeInMs: req.body.timerValue,
+            mapName: req.body.mapName,
         })
 
         await userAndScore.save();
@@ -22,8 +23,11 @@ exports.submit_score = [
 
 ]
 
+// Get all scores corresponding to a map. Map reference is obtained from params. The scores are sorted by time.
 exports.get_all_scores = asyncHandler( async(req, res, next) => {
+    const allScores = await UserAndScore
+    .find({mapName: req.params.map})
+    .sort({timeInMs: 1}).exec();
 
-    const allScores = await UserAndScore.find({}).exec()
     res.json({allScores})
 })
